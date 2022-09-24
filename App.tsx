@@ -8,7 +8,7 @@
  * @format
  */
 
-import React, {type PropsWithChildren} from 'react';
+import React, {useEffect, type PropsWithChildren} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -18,7 +18,6 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
-
 import {
   Colors,
   DebugInstructions,
@@ -26,6 +25,7 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import RNBootSplash from 'react-native-bootsplash';
 
 const Section: React.FC<
   PropsWithChildren<{
@@ -58,6 +58,10 @@ const Section: React.FC<
 };
 
 const App = () => {
+  useEffect(() => {
+    RNBootSplash.hide({fade: true});
+  }, []);
+
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
